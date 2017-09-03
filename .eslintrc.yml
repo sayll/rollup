@@ -1,0 +1,52 @@
+env:
+  es6: true
+  node: true
+  mocha: true
+
+parser: babel-eslint
+
+extends:
+  - eslint:recommended
+
+parserOptions:
+  ecmaVersion: 7
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
+  sourceType: module
+
+# plugins:
+  #- react
+
+rules:
+  arrow-parens:
+    - warn
+    - as-needed
+  brace-style: off
+  comma-dangle:
+    - error
+    - only-multiline
+  consistent-return: off # 总返回value
+  eol-last: off
+  global-require: off
+
+  # 自定义模块警告Z
+  linebreak-style: off
+  no-bitwise: off # 禁用位运算
+  no-console: warn
+  no-plusplus: off
+  no-underscore-dangle: off
+  no-unused-vars: warn
+  no-trailing-spaces: off # 禁止多余空格
+  no-unused-expressions: off #  a && b
+  max-len: off # 禁止单行超出100字节
+  quotes:
+    - error
+    - single
+  spaced-comment: off
+  semi: off
+
+globals:
+  document: false
+  window: false
+  layer: true
+  localStorage: true
