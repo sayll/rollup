@@ -1,17 +1,7 @@
-# 项目
+## 项目
 .idea/
-static/libs/*
 build/
 dist/
-
-## 其他
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-selenium-debug.log
-
-## 生成文件
-/_*
 
 ## Node.js
 node_modules

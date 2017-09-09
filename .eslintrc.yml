@@ -2,20 +2,25 @@ env:
   es6: true
   node: true
   mocha: true
+  browser: true
 
-parser: babel-eslint
+# parser: babel-eslint # Es5 解析器
 
 extends:
-  - eslint:recommended
+  - airbnb
+  #- eslint:recommended
 
 parserOptions:
-  ecmaVersion: 7
+  ecmaVersion: 8
   ecmaFeatures:
+    jsx: true
+    globalReturn: true
+    impliedStrict: true
     experimentalObjectRestSpread: true
   sourceType: module
 
-# plugins:
-  #- react
+#plugins:
+#  - react
 
 rules:
   arrow-parens:
@@ -29,10 +34,10 @@ rules:
   eol-last: off
   global-require: off
 
-  # 自定义模块警告Z
+  # 自定义模块警告
   linebreak-style: off
   no-bitwise: off # 禁用位运算
-  no-console: warn
+  no-console: off
   no-plusplus: off
   no-underscore-dangle: off
   no-unused-vars: warn
@@ -46,7 +51,6 @@ rules:
   semi: off
 
 globals:
-  document: false
   window: false
-  layer: true
+  document: false
   localStorage: true
