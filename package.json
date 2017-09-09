@@ -7,7 +7,7 @@
     "browse": "browser-sync start --s --index src/index.html --files static/**,dist/** --no-notify",
     "start": "npm-run-all --parallel build:dev browse"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
