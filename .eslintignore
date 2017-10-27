@@ -1,5 +1,6 @@
 ## 项目
 *.pcss
+package.json
 
 ## Node.js
 node_modules

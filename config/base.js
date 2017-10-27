@@ -1,23 +1,27 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import babel from 'rollup-plugin-babel'
-import eslint from 'rollup-plugin-eslint'
-import cssnext from 'postcss-cssnext'
-import postCssModules from 'postcss-modules'
-import postCss from 'rollup-plugin-postcss'
-import commonjs from 'rollup-plugin-commonjs' // common转 Es5
-import resolve from 'rollup-plugin-node-resolve' // 解决外部模块问题
-import progress from 'rollup-plugin-progress'
+import cssNext from 'postcss-cssnext';
+import postCssModules from 'postcss-modules';
+import pluginBabel from 'rollup-plugin-babel';
+import pluginCommonjs from 'rollup-plugin-commonjs';
+import pluginESLint from 'rollup-plugin-eslint';
+import pluginPostCss from 'rollup-plugin-postcss';
+import pluginJson from 'rollup-plugin-json';
+import pluginResolve from 'rollup-plugin-node-resolve';
+import pluginProgress from 'rollup-plugin-progress';
 
-const cssExportMap = {}
+import { version } from '../package.json';
+
+const cssExportMap = {};
 
 export default {
-  cache: true,
-  input: 'src/main.js',
+  input: 'src/main.js', // 入口文件，只能单一入口
   output: {
-    name: 'qr',
-    file: 'dist/bundle.js',
-    format: 'umd' // amd,cjs,es,iife,umd - https://rollupjs.org/#big-list-of-options
+    name: 'qr', // 模块名
+    file: 'dist/bundle.js', // 打包文件名
+    paths: {}, // 配置CDN地址
+    format: 'umd' // 导出模式，兼容所有
   },
+  // 项目中引用的第三方库，不被打包
   external: [
     'react'
   ],
@@ -25,42 +29,46 @@ export default {
     jquery: '$'
   },
   plugins: [
-    resolve({
+    // 由于rollup并非开箱机用，需要处理外部模块依赖问题
+    pluginResolve({
       customResolveOptions: {
         moduleDirectory: 'node_modules'
       }
     }),
-    commonjs(),
-    eslint(),
-    postCss({
+    // common转 Es5，需要在Babel之前，以免对其他插件产生影响
+    pluginCommonjs(),
+    // 处理Json格式文件
+    pluginJson(),
+    pluginESLint(),
+    // 处理CSS
+    pluginPostCss({
       plugins: [
-        cssnext({ warnForDuplicates: false }),
+        cssNext({ warnForDuplicates: false }),
         postCssModules({
           getJSON(id, exportTokens) {
-            cssExportMap[id] = exportTokens
+            cssExportMap[id] = exportTokens;
           }
         })
       ],
       // css Module
       getExportNamed: false, // Default false
       getExport(id) {
-        return cssExportMap[id]
+        return cssExportMap[id];
       },
       sourceMap: true,
       extract: 'dist/main.css', // 单独导出样式
       extensions: ['.css', '.pcss']
     }),
-    babel({
+    // 处理JS
+    pluginBabel({
       exclude: 'node_modules/**'
     }),
-    progress({
-      clearLine: false // default: true
+    // 运行进度
+    pluginProgress({
+      clearLine: true // default: true
     })
   ],
-  // map
-  sourcemap: true,
   // 备注
-  intro: '',
-  banner: '',
-  footer: ''
-}
+  banner: `/* Library version ${version} */`,
+  footer: '/* Contact me to saytxk@gmail.com */'
+};

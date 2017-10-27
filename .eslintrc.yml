@@ -32,6 +32,7 @@ rules:
     - only-multiline
   consistent-return: off # 总返回value
   eol-last: off
+  function-paren-newline: off
   global-require: off
 
   # 自定义模块警告
