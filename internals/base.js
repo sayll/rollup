@@ -7,18 +7,15 @@ import typescript from 'rollup-plugin-typescript2'
 export default {
   input: 'src/index.tsx',
   output: {
-    name: 'qr',
-    file: 'dist/bundle.js',
+    name: 'framework7',
+    file: 'dist/framework7.js',
     format: 'umd' // amd,cjs,es,iife,umd - https://rollupjs.org/#big-list-of-options
   },
-  external: [
-    'react',
-    'react-dom'
-  ],
+  external: ['react', 'react-dom', 'framework7'],
   globals: {
-    jquery: '$',
-    react: 'react',
-    reactDom: 'react-dom'
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'framework7': 'Framework7'
   },
   plugins: [
     resolve({

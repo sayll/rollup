@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "framework7": "^2.0.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
