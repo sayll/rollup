@@ -1,11 +1,9 @@
 ## 项目
-.idea/
-build/
 dist/
+.rpt2_cache/
 
 ## Node.js
 node_modules
-jspm_packages
 bower_components
 
 # 编辑器
@@ -14,10 +12,7 @@ bower_components
 *.sublime-workspace
 
 ## Webstorm
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/dataSources*
-.idea/libraries/
+.idea/
 *.iws
 
 ## Visual Studio
