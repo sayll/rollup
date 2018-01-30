@@ -5,12 +5,6 @@ import progress from 'rollup-plugin-progress'
 import typescript from 'rollup-plugin-typescript2'
 
 export default {
-  input: 'src/index.tsx',
-  output: {
-    name: 'framework7',
-    file: 'dist/framework7.js',
-    format: 'umd' // amd,cjs,es,iife,umd - https://rollupjs.org/#big-list-of-options
-  },
   external: ['react', 'react-dom', 'framework7'],
   globals: {
     'react': 'React',

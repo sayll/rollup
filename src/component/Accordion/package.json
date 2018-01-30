@@ -1,0 +1,5 @@
+{
+  "name": "Accordion",
+  "version": "0.0.1",
+  "types": "./Accordion.tsx"
+}

@@ -3,7 +3,9 @@
     // "target": "ES6", // commonjs 、 amd 、 umd 、 system 、 es6 、 es2015
     "jsx": "React",
     "jsxFactory": "React.createElement",
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": "./src",
+    "paths": {}
   },
   "include": [
     "src/**/*.ts",

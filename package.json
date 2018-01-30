@@ -1,14 +1,17 @@
 {
-  "name": "rollup-cli",
-  "main": "dist/bundle.js",
+  "name": "framework7-react",
+  "main": "dist/framework7-react.min.js",
   "scripts": {
     "dev": "rollup -c internals/dev.js -w",
-    "browse": "browser-sync start --s --index src/index.html --files static/**,dist/** --no-notify",
+    "browse": "browser-sync start --s --index src/index.html --files static/**,test/** --no-notify",
     "start": "npm-run-all --parallel dev browse",
     "deploy": "rollup -c internals/prop.js"
   },
   "license": "MIT",
   "dependencies": {
+    "@types/react": "^16.0.35",
+    "@types/react-dom": "^16.0.3",
+    "classnames": "^2.2.5",
     "framework7": "^2.0.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
