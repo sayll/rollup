@@ -21,7 +21,7 @@ config.plugins.push(
       cssnano()
     ],
     minimize: true,
-    sourceMap: true,
+    sourceMap: false,
     extract: true
   }),
   uglify()

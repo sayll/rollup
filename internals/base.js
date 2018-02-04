@@ -5,6 +5,7 @@ import progress from 'rollup-plugin-progress'
 import typescript from 'rollup-plugin-typescript2'
 
 export default {
+  cache: false,
   external: ['react', 'react-dom', 'framework7'],
   globals: {
     'react': 'React',

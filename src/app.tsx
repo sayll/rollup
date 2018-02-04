@@ -1,40 +1,81 @@
-import Framework7 from 'framework7'
+import * as React from 'react'
+import Panel from './component/Panel'
+import Accordion from './component/Accordion'
+import ActionSheet from './component/ActionSheet'
 
-const app = new Framework7({
-  root: '#app',
-  name: 'My App',
-  id: 'com.myApp.test',
-  theme: 'auto',
-  panel: {
-    swipe: 'left',
-    leftBreakpoint: 768,
-    rightBreakpoint: 1024
-  },
-  methods: {
-    alert: function () {
-      app.dialog.alert('Hello World')
-    }
-  },
-  touch: {
-    tapHold: true,
-    tapHoldDelay: 2000,
-    fastClicks: true, // default: true 清楚300ms延迟
-    tapHoldPreventClicks: true,
-    fastClicksDistanceThreshold: 10, // 当触摸移动超过这个范围，触发事件将会失效
-    activeState: true, //  点击其他元素添加active-state的class
-    fastClicksDelayBetweenClicks: 200 // 在多次点击之间允许的最小延迟
-  },
-  on: {
-    touchmove: () => {
-      console.log(23)
-    },
-    pageInit: function (page) {
-      console.log('初始化页面：%o', page)
-    },
-    popupOpen: function (popup) {
-      console.log('页面弹窗：%o', popup)
-    }
+class View extends React.PureComponent {
+  state = {
+    act: null
   }
-})
+  button: Node
+  test: Node
+  button2: Node
 
-export default app
+  componentDidMount() {
+    const act = ActionSheet.showActionSheetWithOptions({
+      // forceToPopover: true,
+      targetEl: '.button',
+      buttons: [
+        {
+          text: 'Title',
+          label: true
+        },
+        {
+          text: '点我',
+          bold: true,
+          onClick: () => {
+            console.log(act, 1)
+          }
+        }
+      ],
+      on: {
+        beforeDestroy: () => {
+          console.log(2333)
+        }
+      }
+    })
+    this.setState({act})
+  }
+
+  handleClick = () => {
+    this.state.act.open()
+  }
+
+  handleRemove = () => {
+    this.state.act.destroy()
+  }
+
+  renderHeader = () => (
+    <div className="navbar">
+      <div className="navbar-inner">
+        <div className="left link">Left</div>
+        <div className="title">Page Title</div>
+        <div className="right link">Right</div>
+      </div>
+    </div>
+  )
+
+  // 手风琴
+  renderAccordion = () => (
+    <Accordion selectedIndex={1} onCollapseChange={e => console.log(e)}>
+      <Panel title="test">描述描述描述描述</Panel>
+      <Panel title="test">描述描述描述描述</Panel>
+    </Accordion>
+  )
+
+  render() {
+    return (
+      <div className="box">
+        {this.renderHeader()}
+        {/*{this.renderAccordion()}*/}
+        <div ref={e => this.button = e} className="button"
+             onClick={this.handleClick}>handleClick
+        </div>
+
+        <button onClick={this.handleRemove} className="button">remove</button>
+      </div>
+    )
+  }
+}
+
+export default View

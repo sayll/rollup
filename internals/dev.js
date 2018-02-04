@@ -21,6 +21,6 @@ config.plugins.push(
     extract: false
   })
 )
-config.sourcemap = true
+// config.sourcemap = true
 
 export default config
