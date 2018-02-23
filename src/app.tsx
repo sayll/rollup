@@ -9,7 +9,6 @@ class View extends React.PureComponent {
   }
   button: Node
   test: Node
-  button2: Node
 
   componentDidMount() {
     const act = ActionSheet.showActionSheetWithOptions({
@@ -65,14 +64,11 @@ class View extends React.PureComponent {
 
   render() {
     return (
-      <div className="box">
-        {this.renderHeader()}
-        {/*{this.renderAccordion()}*/}
-        <div ref={e => this.button = e} className="button"
-             onClick={this.handleClick}>handleClick
+      <div className="page">
+        <div className="page-content">
+          <h2>我是主视图内容</h2>
+          <a className="link" href="/test/">前往其他视图</a>
         </div>
-
-        <button onClick={this.handleRemove} className="button">remove</button>
       </div>
     )
   }

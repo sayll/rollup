@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('framework7'), require('react'), require('react-dom')) :
-	typeof define === 'function' && define.amd ? define(['framework7', 'react', 'react-dom'], factory) :
-	(factory(global.Framework7,global.React,global.ReactDOM));
-}(this, (function (Framework7,React,ReactDom) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('react'), require('framework7'), require('react-dom')) :
+	typeof define === 'function' && define.amd ? define(['react', 'framework7', 'react-dom'], factory) :
+	(factory(global.React,global.Framework7,global.ReactDOM));
+}(this, (function (React,Framework7,ReactDom) { 'use strict';
 
 function __$$styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -32,40 +32,6 @@ function __$$styleInject(css, ref) {
 }
 
 Framework7 = Framework7 && Framework7.hasOwnProperty('default') ? Framework7['default'] : Framework7;
-
-var f7 = new Framework7({
-    root: 'body',
-    name: 'f7-react',
-    id: 'f7-react',
-    theme: 'auto',
-    panel: {
-        swipe: 'left',
-        leftBreakpoint: 768,
-        rightBreakpoint: 1024
-    },
-    methods: {
-        alert: function (msg) { return f7.dialog.alert(msg); }
-    },
-    touch: {
-        tapHold: true,
-        tapHoldDelay: 2000,
-        fastClicks: true,
-        tapHoldPreventClicks: true,
-        fastClicksDistanceThreshold: 10,
-        activeState: true,
-        fastClicksDelayBetweenClicks: 200 // 在多次点击之间允许的最小延迟
-    },
-    on: {
-        touchmove: function () {
-        },
-        pageInit: function (page) {
-            console.log('初始化页面：%o', page);
-        },
-        popupOpen: function (popup) {
-            console.log('页面弹窗：%o', popup);
-        }
-    }
-});
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -100,6 +66,65 @@ var __assign = Object.assign || function __assign(t) {
     }
     return t;
 };
+
+var Demo = /** @class */ (function (_super) {
+    __extends(Demo, _super);
+    function Demo() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Demo.prototype.render = function () {
+        return (React.createElement("div", { className: "page", "data-name": "/test/" },
+            React.createElement("div", { className: "page-content" }, "... scrollable page content goes here ...")));
+    };
+    return Demo;
+}(React.Component));
+
+//# sourceMappingURL=Demo.js.map
+
+var f7 = new Framework7({
+    root: 'body',
+    name: 'f7-react',
+    id: 'f7-react',
+    theme: 'auto',
+    view: {
+        pushState: true,
+        history: true
+    },
+    methods: {
+        alert: function (msg) { return f7.dialog.alert(msg); }
+    },
+    touch: {
+        tapHold: true,
+        tapHoldDelay: 2000,
+        fastClicks: true,
+        tapHoldPreventClicks: true,
+        fastClicksDistanceThreshold: 10,
+        activeState: true,
+        fastClicksDelayBetweenClicks: 30 // 在多次点击之间允许的最小延迟,过长可能影响安卓button的波纹效果
+    },
+    on: {
+        touchmove: function () {
+        },
+        pageInit: function (page) {
+            console.log('初始化页面：%o', page);
+        },
+        popupOpen: function (popup) {
+            console.log('页面弹窗：%o', popup);
+        }
+    },
+    routes: [
+        {
+            path: '/test/',
+            component: Demo
+        },
+    ]
+});
+
+//# sourceMappingURL=f7.js.map
+
+//# sourceMappingURL=isType.js.map
+
+//# sourceMappingURL=utils.js.map
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -181,6 +206,8 @@ var Panel = /** @class */ (function (_super) {
     return Panel;
 }(React.PureComponent));
 
+//# sourceMappingURL=Panel.js.map
+
 var css = ".list .list {\n  margin: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFjY29yZGlvbi5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0NBQ1giLCJmaWxlIjoiYWNjb3JkaW9uLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5saXN0IC5saXN0IHtcbiAgbWFyZ2luOiAwO1xufSJdfQ== */";
 __$$styleInject(css);
 
@@ -213,6 +240,8 @@ var Accordion = /** @class */ (function (_super) {
     return Accordion;
 }(React.PureComponent));
 
+//# sourceMappingURL=Accordion.js.map
+
 function createActionSheet(arg) {
     // TODO 自定义模版，无法使用JSX语法，等待重构
     if (arg.render) {
@@ -232,6 +261,7 @@ var ActionSheet = {
     /** 基础窗口 */
     showActionSheetWithOptions: function (arg) { return createActionSheet(__assign({}, arg)); }
 };
+//# sourceMappingURL=ActionSheet.js.map
 
 var View = /** @class */ (function (_super) {
     __extends(View, _super);
@@ -283,15 +313,15 @@ var View = /** @class */ (function (_super) {
         this.setState({ act: act });
     };
     View.prototype.render = function () {
-        var _this = this;
-        return (React.createElement("div", { className: "box" },
-            this.renderHeader(),
-            React.createElement("div", { ref: function (e) { return _this.button = e; }, className: "button", onClick: this.handleClick }, "handleClick"),
-            React.createElement("button", { onClick: this.handleRemove, className: "button" }, "remove")));
+        return (React.createElement("div", { className: "page" },
+            React.createElement("div", { className: "page-content" },
+                React.createElement("h2", null, "\u6211\u662F\u4E3B\u89C6\u56FE\u5185\u5BB9"),
+                React.createElement("a", { className: "link", href: "/test/" }, "\u524D\u5F80\u5176\u4ED6\u89C6\u56FE"))));
     };
     return View;
 }(React.PureComponent));
 
-ReactDom.render(React.createElement(View, null), document.getElementById('app'));
+ReactDom.render(React.createElement(View), document.getElementById('app'));
+//# sourceMappingURL=index.js.map
 
 })));
