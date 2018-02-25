@@ -1,7 +1,5 @@
-import Accordion from './Accordion'
-import Panel from './Panel'
+import ErrorBoundary from './ErrorBoundary'
 
 export {
-  Panel,
-  Accordion
+  ErrorBoundary
 }

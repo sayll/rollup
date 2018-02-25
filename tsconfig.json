@@ -9,7 +9,9 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx"
+    "src/**/*.tsx",
+    "example/**/*.ts",
+    "example/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

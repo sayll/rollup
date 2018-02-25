@@ -1,15 +1,17 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import postcss from 'rollup-plugin-postcss'
 import replace from 'rollup-plugin-replace'
+import config from './base'
 
-import base from './base'
+config.external.push('react-router-dom', 'react-router-transition')
+config.globals = Object.assign(config.globals, {
+  'react-router-dom': 'ReactRouterDOM',
+  'react-router-transition': 'ReactRouterTransition'
+})
 
-const config = base
-
-config.input = 'src/index.tsx'
+config.input = 'example/index.tsx'
 config.output = {
-  name: 'framework7-react',
-  file: 'test/framework7-react.test.js',
+  name: 'EUI',
+  file: 'dist/eui-mobile.js',
   format: 'umd' // amd,cjs,es,iife,umd - https://rollupjs.org/#big-list-of-options
 }
 
@@ -21,6 +23,5 @@ config.plugins.push(
     extract: false
   })
 )
-// config.sourcemap = true
 
 export default config

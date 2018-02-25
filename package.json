@@ -1,24 +1,30 @@
 {
-  "name": "framework7-react",
-  "main": "dist/framework7-react.min.js",
+  "name": "EUI",
+  "main": "dist/eui-mobile.js",
   "scripts": {
     "dev": "rollup -c internals/dev.js -w",
-    "browse": "browser-sync start --s --index src/index.html --files static/**,test/** --no-notify",
+    "browse": "browser-sync start --s --index example/index.html --files static/**,dist/** --no-notify",
     "start": "npm-run-all --parallel dev browse",
     "deploy": "rollup -c internals/prop.js"
   },
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
-    "framework7": "^2.0.7",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-motion": "^0.5.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-transition": "^1.2.1"
   },
   "devDependencies": {
     "@types/react": "^16.0.0",
     "@types/react-dom": "^16.0.0",
+    "@types/react-motion": "0.0.25",
+    "@types/react-router-dom": "^4.2.4",
     "browser-sync": "^2.18.13",
     "cssnano": "^3.10.0",
+    "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.1",
     "rollup": "^0.55.1",
     "rollup-plugin-commonjs": "^8.2.0",

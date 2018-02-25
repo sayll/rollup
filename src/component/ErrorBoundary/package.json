@@ -1,0 +1,5 @@
+{
+  "name": "ErrorBoundary",
+  "version": "0.0.1",
+  "types": "./ErrorBoundary.tsx"
+}

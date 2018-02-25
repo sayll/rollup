@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import commonjs from 'rollup-plugin-commonjs' // common转 Es5
 import resolve from 'rollup-plugin-node-resolve' // 解决外部模块问题
 import progress from 'rollup-plugin-progress'
@@ -6,11 +5,10 @@ import typescript from 'rollup-plugin-typescript2'
 
 export default {
   cache: false,
-  external: ['react', 'react-dom', 'framework7'],
+  external: ['react', 'react-dom'],
   globals: {
     'react': 'React',
-    'react-dom': 'ReactDOM',
-    'framework7': 'Framework7'
+    'react-dom': 'ReactDOM'
   },
   plugins: [
     resolve({
@@ -19,9 +17,12 @@ export default {
       }
     }),
     commonjs(),
-    typescript(),
+    typescript({
+      check: false
+    }),
     progress({
       clearLine: false // default: true
     })
-  ]
+  ],
+  sourcemap: true
 }
