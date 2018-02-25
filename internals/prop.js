@@ -4,7 +4,7 @@ import uglify from 'rollup-plugin-uglify'
 import replace from 'rollup-plugin-replace'
 import config from './base'
 
-config.input = 'src/component/index.tsx'
+config.input = 'components/index.tsx'
 
 config.output = {
   name: 'EUI',

@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import {Route, HashRouter, Link} from 'react-router-dom'
 import {AnimatedRoute, spring} from 'react-router-transition'
-import ErrorBoundary from '../src/component/ErrorBoundary/ErrorBoundary'
+import ErrorBoundary from '../components/ErrorBoundary'
 import './style.scss'
 
 function mapStyles(styles) {

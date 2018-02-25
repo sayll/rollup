@@ -1,4 +1,4 @@
-import {f7} from 'utils'
+import {f7} from '_utils'
 import * as React from 'react'
 import cls from 'classnames'
 import './accordion.css'

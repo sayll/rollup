@@ -1,4 +1,4 @@
-import {f7} from 'utils'
+import {f7} from '_utils'
 import cls from 'classnames'
 import * as React from 'react'
 
